@@ -2,7 +2,7 @@
 import java.util.*;
 
 public class GameProgram {
-	public static final int shipNum = 2;
+	public static final int shipNum = 5;
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		rules();
