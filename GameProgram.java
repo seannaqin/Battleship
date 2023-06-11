@@ -87,7 +87,7 @@ public class GameProgram {
 	// Get player name
 	public static String names(int num, Scanner console) {
 		System.out.println("Player " + num + ", please enter your name: ");
-		String name = console.nextLine();
+		String name = console.nextLine().trim();
 		return name;
 	}
 	
@@ -106,7 +106,7 @@ public class GameProgram {
 			first.printShipBoard();
 			System.out.println();
 			System.out.println("Where would you like the ship of length " + i + " to be?");
-			String placement = console.nextLine();
+			String placement = console.nextLine().trim();
 			if (testPlacement(placement, first, i)) {
 				first.getShipBoard().addShip(createShip(placement, i));
 				i--;
@@ -230,14 +230,15 @@ public class GameProgram {
 		attacker.getPlayingBoard().toString();
 		System.out.println();
 		System.out.println(attacker.getName() + ", where would you like to attack? ");
-		String position = console.nextLine();
-		System.out.println(position);
+		String position = console.nextLine().trim();
+		position = position.trim();
+		//System.out.println(position);
 		while (tokenCount(position) != 2 || !testAttackString(position, attacker)) {
 			if (tokenCount(position) != 2) {
 				System.out.println("Invalid Input");
 			}
 			System.out.println(attacker.getName() + ", where would you like to attack? ");
-			position = console.nextLine();
+			position = console.nextLine().trim();
 		}
 		updateBoards(attacker, defense, position);
 	}
@@ -265,6 +266,7 @@ public class GameProgram {
 		StringTokenizer token = new StringTokenizer(position);
 		String letterString = token.nextToken();
 		int row = Integer.valueOf(token.nextToken());
+		System.out.println("Letter: " + letterString + ", number: " + row);
 		
 		if (!testCoordinates(player, letterString, row)) {
 			System.out.println("That position is not on the board");
