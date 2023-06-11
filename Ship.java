@@ -18,7 +18,7 @@ public class Ship {
 		}
 	}
 	
-	// Ship after placement
+	// Customized ship
 	public Ship (int length, boolean h, int x, int y) {
 		this.length = length;
 		horizontal = h;
@@ -30,6 +30,28 @@ public class Ship {
 		}
 	}
 	
+	// Update coordinate of ship that is hit
+	public void updateShip(int xCoord) {
+		if (horizontal) {
+			ship[xCoord-x] = "X";
+		}
+		else {
+			ship[xCoord-y] = "X";
+		}
+	}
+	
+	// Determine if all coordinates of the ship has been hit
+	public boolean checkSunk() {
+		for (int i = 0; i < ship.length; i++) {
+			if (!ship[i].equals("X")) {
+				return false;
+			}
+		}
+		System.out.println("Ship sunk!");
+		return true;
+	}
+	
+	// Return variables
 	public boolean horizontal() {
 		return horizontal;
 	}
@@ -45,16 +67,7 @@ public class Ship {
 	public int getY() {
 		return y;
 	}
-	
-	public void updateShip(int xCoord) {
-		if (horizontal) {
-			ship[xCoord-x] = "X";
-		}
-		else {
-			ship[xCoord-y] = "X";
-		}
-	}
-	
+		
 	public String[] getShip() {
 		return ship;
 	}
