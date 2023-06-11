@@ -266,8 +266,7 @@ public class GameProgram {
 		StringTokenizer token = new StringTokenizer(position);
 		String letterString = token.nextToken();
 		int row = Integer.valueOf(token.nextToken());
-		System.out.println("Letter: " + letterString + ", number: " + row);
-		
+				
 		if (!testCoordinates(player, letterString, row)) {
 			System.out.println("That position is not on the board");
 			return false;
